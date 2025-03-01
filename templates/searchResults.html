@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Results by {{ filter }}</h1>
-    <p>{{query}}</p>
+    <h1>Results</h1>
+    <ul>
+        {{ for title in titles }}
+            <li>{{title}}</li>
+        {{ endfor }}
+    </ul>
 {% endblock %}

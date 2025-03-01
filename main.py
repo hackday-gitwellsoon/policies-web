@@ -3,6 +3,7 @@ from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, SubmitField
 from wtforms.validators import DataRequired, Length
+import requests
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "git"
@@ -17,7 +18,12 @@ class SearchForm(FlaskForm):
 def homePage():
 	form = SearchForm()
 	if form.validate_on_submit():
-		return render_template("searchResults.html", query=form.query.data, filter=form.filter.data)
+		results = requests.get(f'https://api.guidelines.fyi/documents?search_query="{form.query.data}"&filter="{form.filter.data}"')
+		titles = []
+		for result in results:
+			titles.append(result["title"])
+
+		return render_template("searchResults.html", titles=titles)
 	else:
 		return render_template("index.html", form=form)
 
