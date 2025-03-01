@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hello World</h1>
-    <p>
-        hello world test
-    </p>
+    <h1>Search</h1>
+    <form method="POST" class="form-inline">
+        {{ form.hidden_tag() }}
+        {{ form.query(placeholder="Search...") }}
+        {{ form.submit() }}
+        </div>
+    </form>
 {% endblock %}
