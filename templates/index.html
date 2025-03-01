@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Search</h1>
+    <h1>Florence Nightingowl</h1>
     <form method="POST" class="form-inline" autocomplete="off">
         {{ form.hidden_tag() }}
-        {{ form.query(placeholder="Search...", value="") }}
+        {{ form.query(value="") }}
         {{ form.filter() }}
         {{ form.submit() }}
         </div>

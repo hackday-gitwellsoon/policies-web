@@ -10,11 +10,7 @@ bootstrap = Bootstrap(app)
 
 class SearchForm(FlaskForm):
 	query = StringField("Search", validators=[DataRequired(), Length(min=0,max=256)], default="")
-	filter = SelectField(
-        "Filter",
-        choices=["Title", "Description"],
-        default="Title"
-    )
+	filter = SelectField("Filter", choices=["Title", "Description"], default="Title")
 	submit = SubmitField("Search")
 
 @app.route('/', methods=["GET", "POST"])
