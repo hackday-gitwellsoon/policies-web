@@ -2,9 +2,10 @@
 
 {% block content %}
     <h1>Search</h1>
-    <form method="POST" class="form-inline">
+    <form method="POST" class="form-inline" autocomplete="off">
         {{ form.hidden_tag() }}
-        {{ form.query(placeholder="Search...") }}
+        {{ form.query(placeholder="Search...", value="") }}
+        {{ form.filter() }}
         {{ form.submit() }}
         </div>
     </form>
