@@ -2,10 +2,10 @@
 
 {% block content %}
 <div class="main-content">
+    <a href="https://api.guidelines.fyi/download/{{ result._id }}" class="btn btn-success">Download PDF</a>
+
     <h1>{{ result.title }}</h1>
 
     {{ result.description | safe}}
-
-    <a href="https://api.guidelines.fyi/download/{{ result._id }}" class="btn btn-success">Download PDF</a>
 </div>
 {% endblock %}
