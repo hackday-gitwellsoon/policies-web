@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="nhs-container">
+    <form method="POST" class="form-inline" autocomplete="off">
+        {{ form.hidden_tag() }}
+        <div class="search-elements">
+            {{ form.hospital_query(placeholder="Search hospital...", value="", class="nhs-input") }}
+        </div>
+        <div class="search-button">
+            {{ form.submit(placeholder="Search", class="nhs-btn") }}
+        </div>
+    </form>
+</div>
+<div class="main-content">
+    <ul>
+        {% for result in results %}
+            <li><a href="{{ url_for('searchPage', hospitalId=result._id) }}">{{result.name}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

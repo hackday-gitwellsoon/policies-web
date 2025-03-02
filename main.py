@@ -10,12 +10,30 @@ app.config["SECRET_KEY"] = "git"
 bootstrap = Bootstrap(app)
 
 class SearchForm(FlaskForm):
-	query = StringField("Search", validators=[DataRequired(), Length(min=0,max=256)], default="")
-	filter = SelectField("Filter", choices=["Title", "Description", "Hospital"], default="Title")
+	query = StringField("Search", validators=[DataRequired(), Length(min=0,max=100)], default="")
+	filter = SelectField("Filter", choices=["Title", "Description"], default="Title")
+	submit = SubmitField("Search")
+
+class HospitalSearchForm(FlaskForm):
+	hospital_query = StringField("Hospital", validators=[DataRequired(), Length(min=0, max=100)])
 	submit = SubmitField("Search")
 
 @app.route('/', methods=["GET", "POST"])
-def homePage():
+def hospitalsPage():
+	form = HospitalSearchForm()
+
+	if form.validate_on_submit():
+		hospital_query = form.hospital_query.data
+	else:
+		hospital_query = ""
+	
+	results = requests.get(f'https://api.guidelines.fyi/hospitals?search_query={hospital_query}').json()
+	print(results, flush=True)
+
+	return render_template("hospital_search.html", form=form, results=results)
+
+@app.route('/search-policies/<int:hospitalId>', methods=["GET", "POST"])
+def searchPage(hospitalId):
 	form = SearchForm()
 
 	if form.validate_on_submit():
@@ -25,8 +43,7 @@ def homePage():
 		query = "" # always show all results when no query is made
 		filter = "Title" # default filter
 
-	# results = requests.get(f'https://api.guidelines.fyi/documents?search_query="{query}"&filter="{filter}"')
-	results = [{"id": i, "title": f"test {i + 1}"} for i in range(100)]
+	results = requests.get(f'https://api.guidelines.fyi/documents?search_query={query}&filter={filter}&hospital_id={hospitalId}').json()
 
 	return render_template("index.html", form=form, results=results)
 
