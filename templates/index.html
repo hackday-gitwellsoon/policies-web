@@ -18,12 +18,10 @@
     </form>
 </div>
 <div class="main-content">
-    {% if searched %}
-        <ul>
-            {% for title in titles %}
-                <li>{{title}}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <ul>
+        {% for result in results %}
+            <li><a href="{{ url_for('policyPage', docId=result.id) }}">{{result.title}}</a></li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}

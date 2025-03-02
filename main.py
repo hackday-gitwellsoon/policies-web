@@ -11,27 +11,28 @@ bootstrap = Bootstrap(app)
 
 class SearchForm(FlaskForm):
 	query = StringField("Search", validators=[DataRequired(), Length(min=0,max=256)], default="")
-	filter = SelectField("Filter", choices=["Title", "Description"], default="Title")
+	filter = SelectField("Filter", choices=["Title", "Description", "Hospital"], default="Title")
 	submit = SubmitField("Search")
 
 @app.route('/', methods=["GET", "POST"])
 def homePage():
 	form = SearchForm()
-	searched = False
+
 	if form.validate_on_submit():
-
-		if False:
-			print("commenting doesnt seem to be working, so this is the alternative")
-			results = requests.get(f'https://api.guidelines.fyi/documents?search_query="{form.query.data}"&filter="{form.filter.data}"')
-
-		results = [{"title": "test 1"}, {"title": "test 2"}, {"title": "test 3"}, {"title": "test 4"}]
-		titles = []
-		for result in results:
-			titles.append(result["title"])
-		searched = True
-		return render_template("index.html", form=form, searched=searched, titles=titles)
+		query = form.query.data
+		filter = form.filter.data
 	else:
-		return render_template("index.html", form=form, searched=searched)
+		query = "" # always show all results when no query is made
+		filter = "Title" # default filter
+
+	# results = requests.get(f'https://api.guidelines.fyi/documents?search_query="{query}"&filter="{filter}"')
+	results = [{"id": i, "title": f"test {i + 1}"} for i in range(100)]
+
+	return render_template("index.html", form=form, results=results)
+
+@app.route('/document/<int:docId>')
+def policyPage(docId):
+	return render_template("policy.html", docId=docId)
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=9000)
