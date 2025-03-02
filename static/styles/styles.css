@@ -63,6 +63,7 @@ html, body {
     margin: 0;
     font-family: Sans-serif;
     position: absolute;
+    overflow: hidden;
 }
 
 body {
@@ -171,7 +172,7 @@ select.nhs-select {
 
 /* Container for search results */
 .main-content {
-    margin-top: 260px;
+    margin-top: 7rem;
     width: 80%;
     padding: 20px;
     overflow: hidden;

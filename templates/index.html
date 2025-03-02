@@ -1,27 +1,23 @@
 {% extends "base.html" %}
 
-{% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-{% endblock %}
-
 {% block content %}
-<div class="nhs-container">
-    <form method="POST" class="form-inline" autocomplete="off">
-        {{ form.hidden_tag() }}
-        <div class="search-elements">
-            {{ form.query(placeholder="Search...", value="", class="nhs-input") }}
-            {{ form.filter(class="nhs-select") }}
-        </div>
-        <div class="search-button">
-            {{ form.submit(class="nhs-btn") }}
-        </div>
-    </form>
-</div>
-<div class="main-content">
-    <ul>
-        {% for result in results %}
-            <li><a href="{{ url_for('policyPage', docId=result.id) }}">{{result.title}}</a></li>
-        {% endfor %}
-    </ul>
-</div>
+    <div class="nhs-container">
+        <form method="POST" class="form-inline" autocomplete="off">
+            {{ form.hidden_tag() }}
+            <div class="search-elements">
+                {{ form.query(placeholder="Search policy...", value="", class="nhs-input") }}
+                {{ form.filter(class="nhs-select") }}
+            </div>
+            <div class="search-button">
+                {{ form.submit(class="nhs-btn") }}
+            </div>
+        </form>
+    </div>
+    <div class="main-content">
+        <ul>
+            {% for result in results %}
+                <li><a href="{{ url_for('policyPage', docId=result.id) }}">{{result.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

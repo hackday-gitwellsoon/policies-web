@@ -5,17 +5,22 @@
 {% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/seperator.css') }}">
 {% endblock %}
 
-{% block navbar %}
-    <nav class="navbar navbar-inverse navbar-fixed-top nhs-blue">
-        <a class="navbar-brand navbar-text" href="{{ url_for('homePage') }}">
-            <img src="{{ url_for('static', filename='florence_icon.png') }}" alt="Logo" class="navbar-logo">
-            Florence NightingOwl
-        </a>
-    </nav>
-{% endblock %}
+<div class="mft-all">
+    {% block navbar %}
+    <div class="mft-navbar">
+        <nav class="navbar navbar-inverse navbar-fixed-top nhs-blue">
+            <a class="navbar-brand navbar-text" href="{{ url_for('homePage') }}">
+                <img src="{{ url_for('static', filename='florence_icon.png') }}" alt="Logo" class="navbar-logo">
+                Florence NightingOwl
+            </a>
+        </nav>
+    </div>
+    {% endblock %}
 
-{% block content %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
+</div>
