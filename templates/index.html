@@ -1,12 +1,29 @@
 {% extends "base.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
 {% block content %}
-    <h1>Florence Nightingowl</h1>
-    <form method="POST" class="form-inline" autocomplete="off">
+<div class="nhs-container">
+    <form method="POST" class="form-inline nhs-font" autocomplete="off">
         {{ form.hidden_tag() }}
-        {{ form.query(value="") }}
-        {{ form.filter() }}
-        {{ form.submit() }}
+        <div class="search-elements">
+            {{ form.query(placeholder="Search...", value="", class="nhs-input") }}
+            {{ form.filter(class="nhs-select") }}
+        </div>
+        <div class="search-button">
+            {{ form.submit(class="nhs-btn") }}
         </div>
     </form>
+</div>
+<div class="main-content">
+    {% if searched %}
+        <ul>
+            {% for title in titles %}
+                <li>{{title}}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
 {% endblock %}

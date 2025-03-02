@@ -17,15 +17,21 @@ class SearchForm(FlaskForm):
 @app.route('/', methods=["GET", "POST"])
 def homePage():
 	form = SearchForm()
+	searched = False
 	if form.validate_on_submit():
-		results = requests.get(f'https://api.guidelines.fyi/documents?search_query="{form.query.data}"&filter="{form.filter.data}"')
+
+		if False:
+			print("commenting doesnt seem to be working, so this is the alternative")
+			results = requests.get(f'https://api.guidelines.fyi/documents?search_query="{form.query.data}"&filter="{form.filter.data}"')
+
+		results = [{"title": "test 1"}, {"title": "test 2"}, {"title": "test 3"}, {"title": "test 4"}]
 		titles = []
 		for result in results:
 			titles.append(result["title"])
-
-		return render_template("searchResults.html", titles=titles)
+		searched = True
+		return render_template("index.html", form=form, searched=searched, titles=titles)
 	else:
-		return render_template("index.html", form=form)
+		return render_template("index.html", form=form, searched=searched)
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=9000)
