@@ -1,7 +1,3 @@
-.nhs-font {
-    font-family: Sans-serif;
-}
-
 .nhs-blue {
     background-color: #005eb8;
     border-color: #004191;
@@ -89,6 +85,11 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
     z-index: 900;
+}
+
+/* Ensure form elements use sans-serif */
+input.nhs-input, select.nhs-select, .nhs-btn {
+    font-family: Sans-serif;
 }
 
 /* Override Bootstrap form-inline to ensure it works properly */
