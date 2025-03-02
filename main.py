@@ -10,28 +10,46 @@ app.config["SECRET_KEY"] = "git"
 bootstrap = Bootstrap(app)
 
 class SearchForm(FlaskForm):
-	query = StringField("Search", validators=[DataRequired(), Length(min=0,max=256)], default="")
+	query = StringField("Search", validators=[DataRequired(), Length(min=0,max=100)], default="")
 	filter = SelectField("Filter", choices=["Title", "Description"], default="Title")
 	submit = SubmitField("Search")
 
+class HospitalSearchForm(FlaskForm):
+	hospital_query = StringField("Hospital", validators=[DataRequired(), Length(min=0, max=100)])
+	submit = SubmitField("Search")
+
 @app.route('/', methods=["GET", "POST"])
-def homePage():
-	form = SearchForm()
-	searched = False
+def hospitalsPage():
+	form = HospitalSearchForm()
+
 	if form.validate_on_submit():
-
-		if False:
-			print("commenting doesnt seem to be working, so this is the alternative")
-			results = requests.get(f'https://api.guidelines.fyi/documents?search_query="{form.query.data}"&filter="{form.filter.data}"')
-
-		results = [{"title": "test 1"}, {"title": "test 2"}, {"title": "test 3"}, {"title": "test 4"}]
-		titles = []
-		for result in results:
-			titles.append(result["title"])
-		searched = True
-		return render_template("index.html", form=form, searched=searched, titles=titles)
+		hospital_query = form.hospital_query.data
 	else:
-		return render_template("index.html", form=form, searched=searched)
+		hospital_query = ""
+	
+	results = requests.get(f'https://api.guidelines.fyi/hospitals?search_query={hospital_query}').json()
+	print(results, flush=True)
+
+	return render_template("hospital_search.html", form=form, results=results)
+
+@app.route('/search-policies/<int:hospitalId>', methods=["GET", "POST"])
+def searchPage(hospitalId):
+	form = SearchForm()
+
+	if form.validate_on_submit():
+		query = form.query.data
+		filter = form.filter.data
+	else:
+		query = "" # always show all results when no query is made
+		filter = "Title" # default filter
+
+	results = requests.get(f'https://api.guidelines.fyi/documents?search_query={query}&filter={filter}&hospital_id={hospitalId}').json()
+
+	return render_template("index.html", form=form, results=results)
+
+@app.route('/document/<int:docId>')
+def policyPage(docId):
+	return render_template("policy.html", docId=docId)
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=9000)
