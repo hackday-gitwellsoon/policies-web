@@ -1,12 +1,19 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-    Florence Nightingowl
+    Florence NightingOwl
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-inverse">
-        <a class="navbar-brand" href="{{url_for('homePage')}}">Git Well Soon</a>
+    <nav class="navbar navbar-inverse navbar-fixed-top nhs-blue">
+        <a class="navbar-brand navbar-text" href="{{ url_for('homePage') }}">
+            <img src="{{ url_for('static', filename='florence_icon.png') }}" alt="Logo" class="navbar-logo">
+            Florence NightingOwl
+        </a>
     </nav>
 {% endblock %}
 

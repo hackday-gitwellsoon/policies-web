@@ -1,0 +1,183 @@
+.nhs-blue {
+    background-color: #005eb8;
+    border-color: #004191;
+}
+
+.nhs-light-blue {
+    background-color: #d8dde0;
+}
+
+.content-container {
+    padding: 20px;
+    margin-top: 120px;
+    margin-left: 100px;
+}
+
+.navbar {
+    position: fixed;
+    top: 20px;
+    width: 80%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-logo {
+    height: 50px;
+    max-height: 100%;
+    margin: 5px 15px 5px 10px;
+}
+
+.navbar-text {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+footer {
+    padding: 15px;
+    margin-top: 20px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/*
+----------------------
+form styles
+----------------------
+*/
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: Sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 150px;
+}
+
+.nhs-container {
+    width: 80%;
+    max-width: 800px;
+    position: fixed;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    z-index: 900;
+}
+
+/* Ensure form elements use sans-serif */
+input.nhs-input, select.nhs-select, .nhs-btn {
+    font-family: Sans-serif;
+}
+
+/* Override Bootstrap form-inline to ensure it works properly */
+.form-inline {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+/* Remove any default styling on form elements */
+.nhs-form {
+    border: none;
+    width: 100%;
+    padding: 0;
+}
+
+/* Container for the search elements */
+.search-elements {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Style for the search bar */
+input.nhs-input {
+    display: inline-block;
+    width: 65%;
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #d8dde0;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+/* Style for the filter dropdown */
+select.nhs-select {
+    display: inline-block;
+    width: 30%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #d8dde0;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+/* Container for the button */
+.search-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Style for the search button */
+.nhs-btn {
+    display: inline-block;
+    width: 75%;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #005eb8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* darker blue hover */
+.nhs-btn:hover {
+    background-color: #004191;
+}
+
+/* even darker blue when clicked */
+.nhs-btn:active {
+    background-color: #003177;
+}
+
+/* Container for search results */
+.main-content {
+    margin-top: 260px;
+    width: 80%;
+    padding: 20px;
+}
+
+img {
+    height: 50px;
+    max-height: 100%;
+    margin-right: 10px;
+    margin: 5px 15px 5px 10px;
+}
