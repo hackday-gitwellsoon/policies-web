@@ -43,7 +43,7 @@ def searchPage(hospitalId):
 		query = "" # always show all results when no query is made
 		filter = "Title" # default filter
 
-	results = requests.get(f'https://api.guidelines.fyi/documents?search_query={query}&filter={filter}&hospital_id={hospitalId}').json()
+	results = requests.get(f'https://api.guidelines.fyi/documents?search_query={query}&filter_by={filter}&hospital_id={hospitalId}').json()
 
 	return render_template("index.html", form=form, results=results)
 
