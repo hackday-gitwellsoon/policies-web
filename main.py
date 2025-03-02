@@ -49,7 +49,7 @@ def searchPage(hospitalId):
 
 @app.route('/document/<int:docId>')
 def policyPage(docId):
-	result = requests.get(f'https://api.guidelines.fyi/document_by_id/{id}').json()
+	result = requests.get(f'https://api.guidelines.fyi/document_by_id/{docId}').json()
 	return render_template("policy.html", result=result)
 
 if __name__ == '__main__':
