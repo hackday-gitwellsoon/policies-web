@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="mft-content-wrapper">
     <div class="nhs-container">
         <form method="POST" class="form-inline" autocomplete="off">
             {{ form.hidden_tag() }}
@@ -20,4 +21,5 @@
             {% endfor %}
         </ul>
     </div>
+</div>
 {% endblock %}
