@@ -17,7 +17,7 @@
         <ul>
             {% for result in results %}
             <div class="mft-list-item">
-                <li><a href="{{ url_for('policyPage', docId=result.id) }}">{{result.title}}</a></li>
+                <li><a href="{{ url_for('policyPage', docId=result._id) }}">{{result.title}}</a></li>
             </div>
             {% endfor %}
         </ul>
