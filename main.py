@@ -49,7 +49,8 @@ def searchPage(hospitalId):
 
 @app.route('/document/<int:docId>')
 def policyPage(docId):
-	return render_template("policy.html", docId=docId)
+	result = requests.get(f'https://api.guidelines.fyi/document_by_id/{id}').json()
+	return render_template("policy.html", result=result)
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=9000)
