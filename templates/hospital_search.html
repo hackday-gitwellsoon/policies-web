@@ -16,7 +16,7 @@
 <div class="main-content">
     <ul>
         {% for result in results %}
-            <li><a href="{{ url_for('searchPage', hospitalId=result._id) }}">{{result.name}}</a></li>
+            <li><a href="{{ url_for('searchPage', hospitalId=result._id) }}">{{result.jurisdiction}} / {{result.board}} / {{result.name}}</a></li>
         {% endfor %}
     </ul>
 </div>
