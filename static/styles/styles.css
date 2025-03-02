@@ -1,10 +1,22 @@
+:root {
+    --mft-primary-brand: #005eb8;
+    --mft-secondary-brand: #004191;
+    --mft-button-primary: #003177;
+    --mft-button-secondary: #004191;
+    --mft-text-one: #1e1e1e;
+    --mft-text-two: #030303;
+    --mft-text-header: white;
+    --mft-background-one: #d8dde0;  
+    --mft-background-two: #ffffff;
+}
+
 .nhs-blue {
-    background-color: #005eb8;
-    border-color: #004191;
+    background-color: var(--mft-primary-brand);
+    border-color: var(--mft-secondary-brand);
 }
 
 .nhs-light-blue {
-    background-color: #d8dde0;
+    background-color: var(--mft-secondary-brand);
 }
 
 .content-container {
@@ -36,7 +48,7 @@
 .navbar-text {
     font-size: 22px;
     font-weight: bold;
-    color: white;
+    color: var(--mft-text-header);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -82,7 +94,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #fff;
+    background-color: var(--mft-background-two);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 30px;
@@ -123,7 +135,7 @@ input.nhs-input {
     margin-right: 10px;
     padding: 10px;
     font-size: 18px;
-    border: 2px solid #d8dde0;
+    border: 2px solid var(--mft-background-one);
     border-radius: 20px;
     vertical-align: middle;
 }
@@ -134,7 +146,7 @@ select.nhs-select {
     width: 30%;
     padding: 10px;
     font-size: 16px;
-    border: 2px solid #d8dde0;
+    border: 2px solid var(--mft-background-one);
     border-radius: 4px;
     vertical-align: middle;
 }
@@ -153,8 +165,8 @@ select.nhs-select {
     width: 75%;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #005eb8;
-    color: white;
+    background-color: var(--mft-primary-brand);
+    color: var(--mft-text-header);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -162,12 +174,12 @@ select.nhs-select {
 
 /* darker blue hover */
 .nhs-btn:hover {
-    background-color: #004191;
+    background-color: var(--mft-button-secondary);
 }
 
 /* even darker blue when clicked */
 .nhs-btn:active {
-    background-color: #003177;
+    background-color: var(--mft-button-primary);
 }
 
 /* Container for search results */
